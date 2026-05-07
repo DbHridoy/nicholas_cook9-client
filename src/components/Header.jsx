@@ -5,15 +5,16 @@ export default function Header() {
         CarpetCare Pro
       </div>
       <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a href="#" className="hover:text-gray-900 transition-colors">Warranties</a>
-        <a href="#" className="hover:text-gray-900 transition-colors">Services</a>
-        <a href="#" className="hover:text-gray-900 transition-colors">Process</a>
-        <a href="#" className="hover:text-gray-900 transition-colors">Support</a>
+        <a href="#home" className="hover:text-gray-900 transition-colors">Home</a>
+        <a href="#assurance" className="hover:text-gray-900 transition-colors">Warranties</a>
+        <a href="#services" className="hover:text-gray-900 transition-colors">Services</a>
+        <a href="#claim" className="hover:text-gray-900 transition-colors">Process</a>
+        <a href="#support" className="hover:text-gray-900 transition-colors">Support</a>
       </nav>
       <div>
-        <button className="bg-gray-900 text-white px-5 py-2.5 rounded text-sm font-medium hover:bg-gray-800 transition-colors">
+        <a href="#claim" className="inline-block bg-gray-900 text-white px-5 py-2.5 rounded text-sm font-medium hover:bg-gray-800 transition-colors">
           File a Claim
-        </button>
+        </a>
       </div>
     </header>
   )

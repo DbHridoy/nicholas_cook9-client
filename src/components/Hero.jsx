@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[600px] flex items-center pt-24 pb-32 overflow-hidden">
+    <section id="home" className="relative w-full min-h-[600px] flex items-center pt-24 pb-32 overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
