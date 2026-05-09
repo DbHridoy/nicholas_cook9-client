@@ -2,25 +2,13 @@
 
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
-  
-  /* Primary brand colors */
-  --color-primary-50: #f0fdf4;
-  --color-primary-100: #dcfce7;
-  --color-primary-500: #22c55e;
-  --color-primary-600: #16a34a;
-  --color-primary-900: #14532d;
-  
-  /* Layout colors based on the image */
-  --color-bg-light: #f8fafc;
-  --color-bg-white: #ffffff;
-  --color-text-dark: #111827;
-  --color-text-muted: #6b7280;
-  
-  --color-accent-dark: #1e293b; /* Dark buttons/cards */
-  --color-accent-light: #eef2ff; /* Light blue section */
+  --font-serif: "Playfair Display", Georgia, serif;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply font-sans text-gray-800 bg-white antialiased;
   }

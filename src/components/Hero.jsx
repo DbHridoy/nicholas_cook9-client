@@ -21,9 +21,9 @@ export default function Hero() {
             Worry-Free Living for Every Surface
           </h1>
           <p className="text-gray-700 text-lg mb-8 max-w-xl leading-relaxed">
-            Protect your home's most essential investment. Our industry-leading assurance
-            programs guarantee longevity, stain resistance, and structural integrity for your
-            premium flooring.
+            From hardwood and laminate to vinyl, tile, and carpet—protect your home's most 
+            essential investment. Our industry-leading assurance programs guarantee longevity, 
+            stain resistance, and structural integrity for every surface.
           </p>
           
           <div className="flex flex-wrap items-center gap-4">

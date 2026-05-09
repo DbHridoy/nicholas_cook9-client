@@ -7,7 +7,7 @@ export default function Assurance() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Premium Assurance</h2>
           <p className="text-gray-600 text-lg">
-            We don't just cover carpets; we provide peace of mind through a 
+            We don't just cover surfaces; we provide peace of mind through a 
             comprehensive ecosystem of care and protection.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function Assurance() {
 
           {/* Card 2: Fast Claim Processing */}
           <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col">
-            <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 mb-6">
+            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 mb-6">
               <Clock className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Claim Processing</h3>
@@ -73,7 +73,7 @@ export default function Assurance() {
             <div>
               <h3 className="text-xl font-bold mb-3">Certified Quality</h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                Every carpet protected by CarpetCare Assurance undergoes rigorous third-party testing 
+                Every material protected by FloorGuard Assurance undergoes rigorous third-party testing 
                 for indoor air quality and sustainability.
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function Assurance() {
               <h3 className="text-xl font-bold text-gray-900 mb-3">Expert Maintenance Support</h3>
               <p className="text-gray-600 text-sm mb-6 leading-relaxed max-w-md">
                 Beyond coverage, we provide access to a network of certified cleaning and repair specialists 
-                to help you maintain your warranty status and keep your carpet looking new.
+                to help you maintain your warranty status and keep your floors looking new.
               </p>
               <a href="#" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-800 transition-colors">
                 View Care Guides <ExternalLink className="w-3.5 h-3.5" />
