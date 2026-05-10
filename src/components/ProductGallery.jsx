@@ -6,7 +6,7 @@ const products = [
     name: 'Premium Hardwood',
     type: 'Natural Wood',
     color: 'from-amber-900/80 to-amber-700/60',
-    image: '/assets/hardwood.jpg',
+    image: '/assets/hardwood.png',
     description: 'Timeless oak and maple selections with industry-leading scratch and water-resistant finishes.',
     features: ['Real wood grain', 'Refinishable', 'Lifetime structural warranty'],
   },

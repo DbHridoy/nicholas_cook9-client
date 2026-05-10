@@ -39,7 +39,7 @@ export default function Assurance() {
             </div>
             <div className="w-full sm:w-2/5 md:w-1/2 flex-shrink-0">
               <img 
-                src="/assets/dark_carpet.png" 
+                src="/assets/cream-room-carpet.png" 
                 alt="Premium dark carpet texture" 
                 className="w-full h-full object-cover rounded-lg shadow-inner"
               />
