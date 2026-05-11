@@ -7,40 +7,41 @@ export default function Assurance() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Premium Assurance</h2>
           <p className="text-gray-600 text-lg">
-            We don't just cover surfaces; we provide peace of mind through a 
+            We don't just cover surfaces; we provide peace of mind through a
             comprehensive ecosystem of care and protection.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          
+
           {/* Card 1: Extensive Lifetime Coverage (Spans 2 columns) */}
           <div className="md:col-span-2 bg-white rounded-xl border border-gray-200 p-8 flex flex-col sm:flex-row gap-8 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex-1">
               <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 mb-6">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Extensive Lifetime Coverage</h3>
+
+
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Protection Designed for Real Life</h3>
               <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                Our warranties go beyond the basics, covering accidental stains, structural defects, 
-                and wear-and-tear for the life of your installation.
+                Coverage designed to help protect against everyday issues that can happen after installation.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" /> 100% Stain & Fade Protection
+                  <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" /> Stain & spill protection
                 </li>
                 <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" /> Structural Integrity Guarantee
+                  <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" /> Structural and installation-related concerns
                 </li>
                 <li className="flex items-start gap-2 text-sm text-gray-700 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" /> Pet-Friendly Assurance
+                  <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" /> Pet-related incidents and common household wear
                 </li>
               </ul>
             </div>
             <div className="w-full sm:w-2/5 md:w-1/2 flex-shrink-0">
-              <img 
-                src="/assets/cream-room-carpet.png" 
-                alt="Premium dark carpet texture" 
+              <img
+                src="/assets/cream-room-carpet.png"
+                alt="Premium dark carpet texture"
                 className="w-full h-full object-cover rounded-lg shadow-inner"
               />
             </div>
@@ -53,10 +54,10 @@ export default function Assurance() {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Claim Processing</h3>
             <p className="text-gray-600 text-sm mb-8 leading-relaxed flex-grow">
-              Our digital-first approach ensures that most claims are reviewed within 24 hours, 
+              Our digital-first approach ensures that most claims are reviewed within 24 hours,
               getting your home back to normal faster.
             </p>
-            
+
             <div>
               <div className="flex justify-between text-xs font-semibold mb-2">
                 <span className="text-gray-500">Average Review Time</span>
@@ -73,7 +74,7 @@ export default function Assurance() {
             <div>
               <h3 className="text-xl font-bold mb-3">Certified Quality</h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                Every material protected by FloorGuard Assurance undergoes rigorous third-party testing 
+                Every material protected by FloorGuard Assurance undergoes rigorous third-party testing
                 for indoor air quality and sustainability.
               </p>
             </div>
@@ -90,21 +91,21 @@ export default function Assurance() {
           {/* Card 4: Expert Maintenance Support (Spans 2 columns) */}
           <div className="md:col-span-2 bg-white rounded-xl border border-gray-200 p-8 flex flex-col sm:flex-row gap-8 shadow-sm hover:shadow-md transition-shadow items-center">
             <div className="w-full sm:w-2/5 md:w-1/3 flex-shrink-0">
-              <img 
-                src="/assets/hallway_cleaner.png" 
-                alt="Expert cleaner in hallway" 
+              <img
+                src="/assets/hallway_cleaner.png"
+                alt="Expert cleaner in hallway"
                 className="w-full h-48 object-cover rounded-lg shadow-sm"
               />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-bold text-gray-900 mb-3">Expert Maintenance Support</h3>
               <p className="text-gray-600 text-sm mb-6 leading-relaxed max-w-md">
-                Beyond coverage, we provide access to a network of certified cleaning and repair specialists 
+                Beyond coverage, we provide access to a network of certified cleaning and repair specialists
                 to help you maintain your warranty status and keep your floors looking new.
               </p>
-              <a href="#" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-800 transition-colors">
+              {/* <a href="#" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-800 transition-colors">
                 View Care Guides <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              </a> */}
             </div>
           </div>
 
