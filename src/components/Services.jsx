@@ -1,4 +1,4 @@
-import { Droplets, Wrench, Shield, Star } from 'lucide-react';
+import { Droplets, Wrench, Shield } from 'lucide-react';
 
 const services = [
   {

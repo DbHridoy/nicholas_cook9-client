@@ -1,4 +1,4 @@
-import { ShieldCheck, Clock, CheckCircle2, Award, ExternalLink, Leaf } from 'lucide-react';
+import { ShieldCheck, Clock, CheckCircle2, Award, Leaf } from 'lucide-react';
 
 export default function Assurance() {
   return (
