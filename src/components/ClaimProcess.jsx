@@ -1,11 +1,13 @@
-import { Info, FileText, MessageSquare, CheckCircle, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Info, FileText, MessageSquare, CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
+import { submitClaim } from '../lib/api';
 
 const steps = [
   {
     number: '01',
     icon: FileText,
-    title: 'Enter Policy Info',
-    description: 'Find your policy number on your purchase receipt or warranty card.',
+    title: 'Enter Order Info',
+    description: 'Find your order ID on your purchase receipt or confirmation email.',
   },
   {
     number: '02',
@@ -22,6 +24,49 @@ const steps = [
 ];
 
 export default function ClaimProcess() {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    flooringType: '',
+    orderId: '',
+    description: '',
+  });
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const updateField = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus({ type: 'idle', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      await submitClaim(form);
+      setForm({
+        name: '',
+        email: '',
+        flooringType: '',
+        orderId: '',
+        description: '',
+      });
+      setStatus({
+        type: 'success',
+        message: 'Your claim was submitted. Our team will review it and contact you shortly.',
+      });
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Unable to submit your claim right now.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="claim" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-6xl">
@@ -38,7 +83,7 @@ export default function ClaimProcess() {
             </h2>
             <p className="text-gray-500 text-lg mb-12 leading-relaxed max-w-md">
               We've simplified our claim submission. No login required—just provide
-              your policy details and a brief description of the issue.
+              your order details and a brief description of the issue.
             </p>
 
             <div className="space-y-0">
@@ -71,21 +116,31 @@ export default function ClaimProcess() {
               <h3 className="text-xl font-bold text-white mb-1">File a Claim</h3>
               <p className="text-gray-400 text-sm mb-8">All fields are required unless noted.</p>
 
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-gray-300">Full Name</label>
                     <input
+                      name="name"
                       type="text"
                       placeholder="John Doe"
+                      value={form.name}
+                      onChange={updateField}
+                      required
+                      minLength={2}
+                      maxLength={80}
                       className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
                     />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-gray-300">Email Address</label>
                     <input
+                      name="email"
                       type="email"
                       placeholder="john@example.com"
+                      value={form.email}
+                      onChange={updateField}
+                      required
                       className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
                     />
                   </div>
@@ -93,21 +148,32 @@ export default function ClaimProcess() {
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-gray-300">Flooring Type</label>
-                  <select className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all">
+                  <select
+                    name="flooringType"
+                    value={form.flooringType}
+                    onChange={updateField}
+                    required
+                    className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
+                  >
                     <option value="">Select your flooring type…</option>
-                    <option>Hardwood</option>
-                    <option>Laminate</option>
-                    <option>Vinyl Plank (LVP)</option>
-                    <option>Tile</option>
-                    <option>Carpet</option>
+                    <option value="Hardwood">Hardwood</option>
+                    <option value="Laminate">Laminate</option>
+                    <option value="Vinyl Plank (LVP)">Vinyl Plank (LVP)</option>
+                    <option value="Tile">Tile</option>
+                    <option value="Carpet">Carpet</option>
                   </select>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-gray-300">Policy Number</label>
+                  <label className="text-xs font-semibold text-gray-300">Order ID</label>
                   <input
+                    name="orderId"
                     type="text"
-                    placeholder="FG-XXXXX-XXXX"
+                    placeholder="ORD-XXXXX"
+                    value={form.orderId}
+                    onChange={updateField}
+                    required
+                    maxLength={120}
                     className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
                   />
                 </div>
@@ -115,8 +181,14 @@ export default function ClaimProcess() {
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-gray-300">Description of Issue</label>
                   <textarea
+                    name="description"
                     rows="4"
                     placeholder="Please describe the stain, damage, or defect…"
+                    value={form.description}
+                    onChange={updateField}
+                    required
+                    minLength={10}
+                    maxLength={2000}
                     className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
                   />
                 </div>
@@ -128,9 +200,30 @@ export default function ClaimProcess() {
                   </p>
                 </div>
 
-                <button className="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold py-3.5 rounded-lg transition-colors duration-300 mt-1 shadow-lg shadow-amber-900/30 group">
-                  Submit Claim Details
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {status.message && (
+                  <div
+                    className={`rounded-lg border p-3 text-xs leading-relaxed ${
+                      status.type === 'success'
+                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
+                        : 'border-red-500/40 bg-red-500/10 text-red-200'
+                    }`}
+                    role="status"
+                  >
+                    {status.message}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-lg transition-colors duration-300 mt-1 shadow-lg shadow-amber-900/30 group"
+                >
+                  {isSubmitting ? 'Submitting Claim' : 'Submit Claim Details'}
+                  {isSubmitting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  )}
                 </button>
               </form>
             </div>
