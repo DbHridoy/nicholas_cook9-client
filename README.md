@@ -1,16 +1,21 @@
-# React + Vite
+# Nicholas Cook9 Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Public customer site for submitting claims against Nicholas Cook9 contracts.
 
-Currently, two official plugins are available:
+## Backend Integration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The claim form posts to `POST /api/v1/claims`. During local development, Vite proxies `/api` to the backend at `http://localhost:5200`.
 
-## React Compiler
+1. Start the backend from `../nicholas_cook9-backend`:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+   ```sh
+   pnpm dev
+   ```
 
-## Expanding the ESLint configuration
+2. Start the client:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+   ```sh
+   npm run dev
+   ```
+
+For production, either serve the client behind the same domain as the backend so `/api/v1` resolves correctly, or set `VITE_API_BASE_URL` to the deployed backend API URL.

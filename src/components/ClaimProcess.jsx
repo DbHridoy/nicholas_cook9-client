@@ -27,7 +27,6 @@ export default function ClaimProcess() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    flooringType: '',
     orderId: '',
     description: '',
   });
@@ -49,7 +48,6 @@ export default function ClaimProcess() {
       setForm({
         name: '',
         email: '',
-        flooringType: '',
         orderId: '',
         description: '',
       });
@@ -144,24 +142,6 @@ export default function ClaimProcess() {
                       className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
                     />
                   </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-gray-300">Flooring Type</label>
-                  <select
-                    name="flooringType"
-                    value={form.flooringType}
-                    onChange={updateField}
-                    required
-                    className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
-                  >
-                    <option value="">Select your flooring type…</option>
-                    <option value="Hardwood">Hardwood</option>
-                    <option value="Laminate">Laminate</option>
-                    <option value="Vinyl Plank (LVP)">Vinyl Plank (LVP)</option>
-                    <option value="Tile">Tile</option>
-                    <option value="Carpet">Carpet</option>
-                  </select>
                 </div>
 
                 <div className="space-y-1.5">
