@@ -61,7 +61,7 @@ export default function ProductGallery() {
             Explore Our Protected Surfaces
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Every flooring type we cover is backed by our comprehensive FloorGuard Assurance,
+            Every flooring type we cover is backed by our comprehensive AxisOne Assurance,
             ensuring your home stays beautiful for decades.
           </p>
         </div>

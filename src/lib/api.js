@@ -14,14 +14,33 @@ async function request(path, options = {}) {
 export async function submitClaim(payload) {
   const claimPayload = { ...payload };
   delete claimPayload.flooringType;
+  const photos = claimPayload.photos ?? [];
+  delete claimPayload.photos;
 
-  const body = await request('/claims', {
+  const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(claimPayload),
-  });
+  };
+
+  if (photos.length > 0) {
+    const formData = new FormData();
+
+    Object.entries(claimPayload).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    photos.forEach((photo) => {
+      formData.append('files', photo);
+    });
+
+    delete options.headers;
+    options.body = formData;
+  }
+
+  const body = await request('/claims', options);
 
   return body.data.claim;
 }

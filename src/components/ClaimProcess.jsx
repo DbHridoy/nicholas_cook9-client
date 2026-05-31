@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Info, FileText, MessageSquare, CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
+import { Info, FileText, MessageSquare, CheckCircle, ArrowRight, Loader2, Upload } from 'lucide-react';
 import { submitClaim } from '../lib/api';
 
 const steps = [
@@ -29,6 +29,7 @@ export default function ClaimProcess() {
     email: '',
     orderId: '',
     description: '',
+    photos: [],
   });
   const [status, setStatus] = useState({ type: 'idle', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,6 +37,10 @@ export default function ClaimProcess() {
   const updateField = (event) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
+  };
+
+  const updatePhotos = (event) => {
+    setForm((current) => ({ ...current, photos: Array.from(event.target.files ?? []).slice(0, 10) }));
   };
 
   const handleSubmit = async (event) => {
@@ -50,7 +55,9 @@ export default function ClaimProcess() {
         email: '',
         orderId: '',
         description: '',
+        photos: [],
       });
+      event.target.reset();
       setStatus({
         type: 'success',
         message: 'Your claim was submitted. Our team will review it and contact you shortly.',
@@ -171,6 +178,36 @@ export default function ClaimProcess() {
                     maxLength={2000}
                     className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"
                   />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-gray-300">Photos</label>
+                  <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-dashed border-gray-700 bg-gray-800 px-3.5 py-3 text-sm text-gray-300 transition-all hover:border-amber-500 focus-within:border-amber-500 focus-within:ring-2 focus-within:ring-amber-500">
+                    <Upload className="h-4 w-4 flex-shrink-0 text-amber-500" />
+                    <span className="min-w-0 flex-1 truncate">
+                      {form.photos.length > 0
+                        ? `${form.photos.length} photo${form.photos.length === 1 ? '' : 's'} selected`
+                        : 'Upload claim photos'}
+                    </span>
+                    <input
+                      name="photos"
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      multiple
+                      onChange={updatePhotos}
+                      className="sr-only"
+                    />
+                  </label>
+                  <p className="text-[11px] text-gray-500">Upload up to 10 JPG, PNG, or WebP photos.</p>
+                  {form.photos.length > 0 && (
+                    <ul className="space-y-1 text-[11px] text-gray-500">
+                      {form.photos.map((photo) => (
+                        <li key={`${photo.name}-${photo.lastModified}`} className="truncate">
+                          {photo.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 <div className="flex gap-2.5 bg-gray-800/60 rounded-lg p-3.5 border border-gray-700/50">

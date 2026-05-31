@@ -74,7 +74,7 @@ export default function Assurance() {
             <div>
               <h3 className="text-xl font-bold mb-3">Certified Quality</h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                Every material protected by FloorGuard Assurance undergoes rigorous third-party testing
+                Every material protected by AxisOne Assurance undergoes rigorous third-party testing
                 for indoor air quality and sustainability.
               </p>
             </div>
