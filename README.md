@@ -4,7 +4,7 @@ Public customer site for submitting claims against Nicholas Cook9 contracts.
 
 ## Backend Integration
 
-The claim form posts to `POST /api/v1/claims`. During local development, Vite proxies `/api` to the backend at `http://localhost:5200`.
+The claim form posts to `POST /api/v1/claims`. During local development, Vite proxies `/api` to the backend at `https://nicholas-cook9-backend.onrender.com`.
 
 1. Start the backend from `../nicholas_cook9-backend`:
 
@@ -18,4 +18,4 @@ The claim form posts to `POST /api/v1/claims`. During local development, Vite pr
    npm run dev
    ```
 
-For production, either serve the client behind the same domain as the backend so `/api/v1` resolves correctly, or set `VITE_API_BASE_URL` to the deployed backend API URL.
+For production, set `VITE_API_BASE_URL=https://nicholas-cook9-backend.onrender.com/api/v1`.

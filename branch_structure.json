@@ -1,12 +1,15 @@
 {
   "default_branch": "main",
   "branches": [
+    "integration",
     "main"
   ],
   "parent": {
+    "integration": "main",
     "main": null
   },
   "order": [
-    "main"
+    "main",
+    "integration"
   ]
 }
