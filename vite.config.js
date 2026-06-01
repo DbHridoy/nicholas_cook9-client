@@ -8,8 +8,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5200',
+        target: 'https://nicholas-cook9-backend.onrender.com',
         changeOrigin: true,
+        
       },
     },
   },
