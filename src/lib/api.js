@@ -1,5 +1,5 @@
 const API_BASE_URL = (
-  import.meta.env.VITE_API_BASE_URL ?? 'https://nicholas-cook9-backend.onrender.com/api/v1'
+  import.meta.env.VITE_API_BASE_URL ?? 'https://api.axisonedata.com/api/v1'
 ).replace(/\/$/, '');
 
 async function request(path, options = {}) {
